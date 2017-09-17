@@ -5,12 +5,22 @@ class ListBuilder {
     constructor(DataService) {
 
     }
+
+    getDataToDisplay(item) {
+
+        if (this.propToDisplay && item[this.propToDisplay]) {
+            return item[this.propToDisplay];
+        }
+
+        return item;
+    }
 }
 
 export default {
     template,
     bindings : {
-        list: '<?'
+        list: '<?',
+        propToDisplay: '@'
     },
     controller: ListBuilder
 }

@@ -16,12 +16,19 @@ class MainController {
     init() {
         this._setDefaults();
         this._loadList();
+        this._setListConf();
     }
 
     _setDefaults() {
         this.listName = this.$state.current.data.listName;
         this.invoiceFormShowing = false;
         this.additionalData = {};
+    }
+
+    _setListConf() {
+        if (this.listName === 'customers' || this.listName === 'products') {
+            this.listItemName = 'name'
+        }
     }
 
     _loadList() {
@@ -36,8 +43,8 @@ class MainController {
 
         _each(additionalLists, listName => {
             this.DataService.loadList(listName).then(data => {
-                    this.additionalData[listName] = data;
-                });
+                this.additionalData[listName] = data;
+            });
         });
     }
 

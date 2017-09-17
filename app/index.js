@@ -25,6 +25,8 @@ import routes from './routes/routes';
 
 /* Other */
 
+import './styles/index.scss';
+
 
 angular.module('invoice-app', [
     'ui.router',

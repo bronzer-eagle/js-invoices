@@ -1,16 +1,18 @@
-<button class="btn-primary"
-        ng-if="!$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
-        ng-click="$ctrl.showInvoiceForm()"
->
-    Add new invoice
-</button>
+<div class="-mg-bottom-15">
+    <button class="btn-primary"
+            ng-if="!$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
+            ng-click="$ctrl.showInvoiceForm()"
+    >
+        Add new invoice
+    </button>
 
-<button class="btn-warning"
-        ng-if="$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
-        ng-click="$ctrl.cancelCreatingInvoice()"
->
-    Cancel
-</button>
+    <button class="btn-warning"
+            ng-if="$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
+            ng-click="$ctrl.cancelCreatingInvoice()"
+    >
+        Cancel
+    </button>
+</div>
 
 <invoice-creator
         ng-if="$ctrl.invoiceFormShowing && $ctrl.additionalData"
@@ -19,4 +21,4 @@
 >
 </invoice-creator>
 
-<list-builder list="$ctrl.list"></list-builder>
+<list-builder prop-to-display="{{ $ctrl.listItemName }}" list="$ctrl.list"></list-builder>
