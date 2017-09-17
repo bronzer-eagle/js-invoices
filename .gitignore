@@ -60,3 +60,10 @@ typings/
 #Ignore for app
 package-lock.json
 invoices.sqlite
+/public/index.js
+/public/index.js.map
+.idea/
+app/components/
+app/containers/
+public/index.js
+public/index.js.map
