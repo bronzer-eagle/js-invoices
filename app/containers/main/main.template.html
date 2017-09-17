@@ -1,1 +1,22 @@
-Testing
+<button class="btn-primary"
+        ng-if="!$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
+        ng-click="$ctrl.showInvoiceForm()"
+>
+    Add new invoice
+</button>
+
+<button class="btn-warning"
+        ng-if="$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
+        ng-click="$ctrl.cancelCreatingInvoice()"
+>
+    Cancel
+</button>
+
+<invoice-creator
+        ng-if="$ctrl.invoiceFormShowing && $ctrl.additionalData"
+        additional-data="$ctrl.additionalData"
+        ng-model="$ctrl.newInvoice"
+>
+</invoice-creator>
+
+<list-builder list="$ctrl.list"></list-builder>

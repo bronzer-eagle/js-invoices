@@ -14,7 +14,8 @@
     "express": "~4.13.4",
     "lodash": "latest",
     "sequelize": "^3.20.0",
-    "sqlite3": "latest"
+    "sqlite3": "latest",
+    "ui-select": "^0.19.8"
   },
   "devDependencies": {
     "babel-loader": "^7.1.2",

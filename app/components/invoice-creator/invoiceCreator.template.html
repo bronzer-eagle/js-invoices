@@ -1,0 +1,25 @@
+<ng-form name="$ctrl.invoiceForm">
+
+    <div class="row">
+        <div class="col-xs-6">
+
+            <ui-select ng-model="$ctrl.ngModel.invoice_id">
+                <ui-select-match>
+                    <span ng-bind="$select.selected.name"></span>
+                </ui-select-match>
+                <ui-select-choices
+                        repeat="customer.id as customer in ($ctrl.additionalData.customers | filter: $select.search) track by $index">
+                    <span ng-bind="customer.name"></span>
+                </ui-select-choices>
+            </ui-select>
+
+        </div>
+
+        <div class="col-xs-6">
+
+        </div>
+    </div>
+
+</ng-form>
+
+{{ $ctrl.ngModel }}
