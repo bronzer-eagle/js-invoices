@@ -132,7 +132,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // CUSTOMERS API
 
-app.route('/api/customers')
+app.route('/api/main')
   .get(function(req, res) {
     Customer.findAll().then(function(customers) {
       res.json(customers);
@@ -145,7 +145,7 @@ app.route('/api/customers')
     });
   });
 
-app.route('/api/customers/:customer_id')
+app.route('/api/main/:customer_id')
     .get(function(req, res) {
         Customer.findById(req.params.customer_id).then(function(customer) {
             res.json(customer);
