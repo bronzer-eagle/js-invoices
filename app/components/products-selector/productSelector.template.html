@@ -1,0 +1,33 @@
+<div class="row" ng-repeat="products in $ctrl.products|limitTo:$ctrl.limitProducts">
+
+    <!--Products-->
+
+    <div class="col-xs-6 input-container">
+
+        <ui-select ng-model="$ctrl.ngModel[$index].product_id"
+                   ng-disabled="$ctrl.isDisabledSelector($index)"
+                   ng-change="$ctrl.onAddingProduct($index)">
+            <ui-select-match placeholder="Choose product">
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices
+                    repeat="product.id as product in ($ctrl.productsAvailable | filter: $select.search) track by $index">
+                <span ng-bind="product.name"></span>
+            </ui-select-choices>
+        </ui-select>
+
+    </div>
+
+    <!--Product quantity-->
+
+    <div class="col-xs-6 input-container">
+        <input type="number"
+               placeholder="Set product quantity"
+               class="form-control"
+               ng-change="$ctrl.onAddingQuantity($index)"
+               required
+               ng-readonly="!$ctrl.ngModel[$index].product_id"
+               ng-model="$ctrl.ngModel[$index].quantity">
+    </div>
+
+</div>

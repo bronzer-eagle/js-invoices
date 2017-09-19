@@ -1,9 +1,14 @@
 <ng-form name="$ctrl.invoiceForm">
 
     <div class="row">
+
+        <!--Customer selector-->
+
         <div class="col-xs-6 input-container">
 
-            <ui-select ng-model="$ctrl.ngModel.invoice_id">
+            <ui-select ng-model="$ctrl.ngModel.customer_id"
+                       ng-change="$ctrl.onChange()"
+            >
                 <ui-select-match placeholder="Choose customer">
                     <span ng-bind="$select.selected.name"></span>
                 </ui-select-match>
@@ -15,35 +20,28 @@
 
         </div>
 
+        <!--Invoice discount-->
+
         <div class="col-xs-6 input-container">
 
-            <ui-select ng-model="$ctrl.ngModel.product_id">
-                <ui-select-match placeholder="Choose product">
-                    <span ng-bind="$select.selected.name"></span>
-                </ui-select-match>
-                <ui-select-choices
-                        repeat="product.id as product in ($ctrl.additionalData.products | filter: $select.search) track by $index">
-                    <span ng-bind="product.name"></span>
-                </ui-select-choices>
-            </ui-select>
+            <div class="col-xs-6 input-container">
+                <input type="number"
+                       ng-change="$ctrl.onChange()"
+                       ng-model-options="{debounce: 1000}"
+                       placeholder="Set invoice discount"
+                       class="form-control"
+                       ng-model="$ctrl.ngModel.discount">
+            </div>
 
         </div>
 
-        <div class="col-xs-6 input-container">
-            <input type="number"
-                   placeholder="Set product quantity"
-                   class="form-control"
-                   ng-if="$ctrl.ngModel.product_id"
-                   ng-model="$ctrl.ngModel.quantity">
-        </div>
-
-        <div class="col-xs-6 input-container">
-            <input type="number"
-                   placeholder="Set invoice discount"
-                   class="form-control"
-                   ng-model="$ctrl.ngModel.discount">
-        </div>
     </div>
+
+    <products-selector
+            ng-if="$ctrl.additionalData.products && $ctrl.ngModel.id"
+            ng-model="$ctrl.ngModel.products"
+            on-adding="$ctrl.onItemChange()"
+            products="$ctrl.additionalData.products"></products-selector>
 
 </ng-form>
 

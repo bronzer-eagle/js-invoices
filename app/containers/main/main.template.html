@@ -10,13 +10,15 @@
             ng-if="$ctrl.invoiceFormShowing && $ctrl.isInvoiceState()"
             ng-click="$ctrl.cancelCreatingInvoice()"
     >
-        Cancel
+        End creating
     </button>
 </div>
 
 <invoice-creator
         ng-if="$ctrl.invoiceFormShowing && $ctrl.additionalData"
         additional-data="$ctrl.additionalData"
+        on-change="$ctrl.saveInvoice()"
+        on-item-change="$ctrl.saveInvoiceItem()"
         ng-model="$ctrl.newInvoice"
 >
 </invoice-creator>

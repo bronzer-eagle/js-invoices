@@ -23,6 +23,7 @@ class MainController {
         this.listName = this.$state.current.data.listName;
         this.invoiceFormShowing = false;
         this.additionalData = {};
+        this.newInvoice = {};
     }
 
     _setListConf() {
@@ -62,6 +63,22 @@ class MainController {
 
     cancelCreatingInvoice() {
         this.invoiceFormShowing = false;
+    }
+
+    saveInvoice() {
+        this.DataService.saveInvoice(this.newInvoice)
+            .then(res => {
+                this.newInvoice.id = res.id;
+            })
+    }
+
+    saveInvoiceItem() {
+
+
+        this.DataService.saveInvoiceItem(this.newInvoice)
+            .then(res => {
+
+            })
     }
 }
 

@@ -19,6 +19,10 @@ import UtilService from './services/util.service';
 import 'angular-ui-router';
 import 'ui-select';
 
+/* Directives */
+
+import ProductsSelector from './components/products-selector/productSelector.component';
+
 /* Configs */
 
 import routes from './routes/routes';
@@ -37,6 +41,7 @@ angular.module('invoice-app', [
     .component('mainComponent', Main)
     .component('listBuilder', ListBuilder)
     .component('invoiceCreator', InvoiceCreator)
+    .component('productsSelector', ProductsSelector)
 
     .service('DataService', DataService)
     .service('UtilService', UtilService)
