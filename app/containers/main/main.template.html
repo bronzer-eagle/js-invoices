@@ -17,10 +17,11 @@
 <invoice-creator
         ng-if="$ctrl.invoiceFormShowing && $ctrl.additionalData"
         additional-data="$ctrl.additionalData"
-        on-change="$ctrl.saveInvoice()"
-        on-item-change="$ctrl.saveInvoiceItem()"
         ng-model="$ctrl.newInvoice"
 >
 </invoice-creator>
 
-<list-builder prop-to-display="{{ $ctrl.listItemName }}" list="$ctrl.list"></list-builder>
+<list-builder
+        ng-if="!$ctrl.invoiceFormShowing"
+        prop-to-display="{{ $ctrl.listItemName }}"
+        list="$ctrl.list"></list-builder>

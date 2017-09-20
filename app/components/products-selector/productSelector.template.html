@@ -2,11 +2,14 @@
 
     <!--Products-->
 
-    <div class="col-xs-6 input-container">
+    <div class="input-container"
+         ng-class="{
+            'col-xs-6' : $ctrl.ngModel[$index].product_id,
+            'col-xs-12': !$ctrl.ngModel[$index].product_id
+         }">
 
         <ui-select ng-model="$ctrl.ngModel[$index].product_id"
-                   ng-disabled="$ctrl.isDisabledSelector($index)"
-                   ng-change="$ctrl.onAddingProduct($index)">
+                   ng-change="$ctrl.onProductSelection($index)">
             <ui-select-match placeholder="Choose product">
                 <span ng-bind="$select.selected.name"></span>
             </ui-select-match>
@@ -20,14 +23,21 @@
 
     <!--Product quantity-->
 
-    <div class="col-xs-6 input-container">
+    <div class="col-xs-6 input-container"
+         ng-if="$ctrl.ngModel[$index].product_id">
+
         <input type="number"
                placeholder="Set product quantity"
                class="form-control"
-               ng-change="$ctrl.onAddingQuantity($index)"
+               ng-change="$ctrl.onProductSelection($index)"
+               ng-model-options="{debounce: 1000}"
                required
-               ng-readonly="!$ctrl.ngModel[$index].product_id"
                ng-model="$ctrl.ngModel[$index].quantity">
+
     </div>
 
 </div>
+
+<button class="btn-default" ng-click="$ctrl.addProductRow()">
+    Add product
+</button>

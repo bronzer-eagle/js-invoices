@@ -6,8 +6,8 @@
 
         <div class="col-xs-6 input-container">
 
-            <ui-select ng-model="$ctrl.ngModel.customer_id"
-                       ng-change="$ctrl.onChange()"
+            <ui-select ng-model="$ctrl.newInvoice.customer_id"
+                       ng-change="$ctrl.saveInvoice()"
             >
                 <ui-select-match placeholder="Choose customer">
                     <span ng-bind="$select.selected.name"></span>
@@ -26,11 +26,11 @@
 
             <div class="col-xs-6 input-container">
                 <input type="number"
-                       ng-change="$ctrl.onChange()"
+                       ng-change="$ctrl.saveInvoice()"
                        ng-model-options="{debounce: 1000}"
                        placeholder="Set invoice discount"
                        class="form-control"
-                       ng-model="$ctrl.ngModel.discount">
+                       ng-model="$ctrl.newInvoice.discount">
             </div>
 
         </div>
@@ -38,11 +38,13 @@
     </div>
 
     <products-selector
-            ng-if="$ctrl.additionalData.products && $ctrl.ngModel.id"
-            ng-model="$ctrl.ngModel.products"
-            on-adding="$ctrl.onItemChange()"
+            ng-if="$ctrl.additionalData.products && $ctrl.newInvoice.id"
+            ng-model="$ctrl.newInvoice.products"
+            on-adding="$ctrl.saveInvoiceItem(product)"
             products="$ctrl.additionalData.products"></products-selector>
 
-</ng-form>
+    <p class="-mg-top-20">
+        Invoice total: {{ $ctrl.newInvoice.total }}
+    </p>
 
-{{ $ctrl.ngModel }}
+</ng-form>

@@ -30,4 +30,16 @@ export default class DataService {
                 console.log('error', e);
             })
     }
+
+    saveInvoiceItem(id, data) {
+        const route = `invoices/${id}/items${data.id ? '/' + data.id : ''}`;
+        const method = data.id ? 'PUT' : 'POST';
+        const url = this.settings.apiPrefixed(route);
+
+        return this.$http({url, data, method})
+            .then(data => data.data)
+            .catch(e => {
+                console.log('error', e);
+            })
+    }
 }

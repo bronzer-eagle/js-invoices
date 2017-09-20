@@ -21,28 +21,30 @@ class ProductSelectorController {
         this.disabledInputs = []
     }
 
-    onAddingProduct(index) {
+    onProductSelection(index) {
+        let product = this.ngModel[index];
 
-        this.disabledSelectors.push(index);
+        product.price = this.getProductPrice(product.product_id);
 
-        if (this.onAdding) {
-            this.onAdding(index);
+        if (!product.quantity) {
+            product.quantity = 1;
         }
 
-        this.removeProductFromAvailAble(id);
-        this.addProductRow();
+        this.removeProductFromAvailAble(product.product_id);
+
+        if (this.onAdding) {
+            this.onAdding({product});
+        }
     }
 
-    isDisabledSelector(index) {
-        return this.disabledSelectors.includes(index);
-    }
+    getProductPrice(id) {
+        const product = _find(this.products, item => item.id === id);
 
-    onAddingQuantity(index) {
-
+        return product ? product.price : 0;
     }
 
     removeProductFromAvailAble(id) {
-        this.productsAvailable = _reject(this.productsAvailable, product => {
+        this.productsAvailable = _reject(this.products, product => {
             return product.id === id;
         })
     }
@@ -52,7 +54,6 @@ class ProductSelectorController {
         if (this.limitProducts <= this.products.length) {
             this.limitProducts++;
         }
-
     }
 }
 
