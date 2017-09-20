@@ -22,6 +22,7 @@
 </invoice-creator>
 
 <list-builder
-        ng-if="!$ctrl.invoiceFormShowing"
-        prop-to-display="{{ $ctrl.listItemName }}"
+        ng-if="!$ctrl.invoiceFormShowing && $ctrl.list.length"
+        props-to-display="$ctrl.listItemNames"
+        title-prop="{{ $ctrl.listItemTitles }}"
         list="$ctrl.list"></list-builder>

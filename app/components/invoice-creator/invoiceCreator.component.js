@@ -56,10 +56,6 @@ class InvoiceCreator {
         return Math.round(total * 100) / 100;
     }
 
-    cancelCreatingInvoice() {
-        this.invoiceFormShowing = false;
-    }
-
     /* Private methods */
 
     _processInvoice() {

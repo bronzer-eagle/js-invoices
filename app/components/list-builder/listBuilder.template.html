@@ -1,5 +1,11 @@
 <ul>
-    <li ng-repeat="item in $ctrl.list">
-        {{ $ctrl.getDataToDisplay(item) }}
+    <li ng-repeat="item in $ctrl.processedList">
+        <p>
+            {{ item.title }}
+        </p>
+
+        <ul ng-repeat="prop in item.listProps">
+            <li>{{prop.key}}: {{prop.value}}</li>
+        </ul>
     </li>
 </ul>

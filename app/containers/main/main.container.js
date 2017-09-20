@@ -27,7 +27,18 @@ class MainController {
 
     _setListConf() {
         if (this.listName === 'customers' || this.listName === 'products') {
-            this.listItemName = 'name'
+            this.listItemTitles = 'name'
+        } else {
+            this.listItemTitles = 'id'
+        }
+
+        if (this.listName === 'products') {
+            this.listItemNames = ['price'];
+
+        } else if (this.listName === 'customers') {
+            this.listItemNames = ['address', 'phone'];
+        } else {
+            this.listItemNames = ['discount', 'total'];
         }
     }
 
@@ -58,6 +69,12 @@ class MainController {
         this._loadAdditionalData();
 
         this.invoiceFormShowing = true;
+    }
+
+    cancelCreatingInvoice() {
+        this.invoiceFormShowing = false;
+
+        this.$state.reload()
     }
 }
 
