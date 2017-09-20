@@ -24,14 +24,12 @@
 
         <div class="col-xs-6 input-container">
 
-            <div class="col-xs-6 input-container">
-                <input type="number"
-                       ng-change="$ctrl.saveInvoice()"
-                       ng-model-options="{debounce: 1000}"
-                       placeholder="Set invoice discount"
-                       class="form-control"
-                       ng-model="$ctrl.newInvoice.discount">
-            </div>
+            <input type="number"
+                   ng-change="$ctrl.saveInvoice()"
+                   ng-model-options="{debounce: 1000}"
+                   placeholder="Set invoice discount"
+                   class="form-control"
+                   ng-model="$ctrl.newInvoice.discount">
 
         </div>
 

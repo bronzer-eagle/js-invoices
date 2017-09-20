@@ -23,6 +23,11 @@ class InvoiceCreator {
     /* Actions */
 
     saveInvoice() {
+
+        if (this.newInvoice.products.length) {
+            this._processInvoice();
+        }
+
         this.DataService.saveInvoice(this.newInvoice)
             .then(res => {
                 if (!this.newInvoice.id) {
@@ -42,6 +47,7 @@ class InvoiceCreator {
                 }
 
                 this._processInvoice();
+                this.saveInvoice();
             })
     }
 
@@ -60,7 +66,6 @@ class InvoiceCreator {
 
     _processInvoice() {
         this.newInvoice.total = this.calculateInvoiceTotal();
-        this.saveInvoice();
     }
 
     _addInvoiceItemId(product, id) {
